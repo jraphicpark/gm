@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<!-- 
+Robert Sims - Web Dev Candidate - Example 2
+
+JS and Jquery (Loops, Dom manipulation, User based actions)
+
+- Create an array of 20 strings (names, songs, birds, phrases...anything). 
+
+- Using jquery, display each string as a numbered list on the page. 
+
+- Every third string should be bolded, every 5th string should be italicized, and every even numbered string should have a black border around it. 
+
+- If a user clicks on an even numbered string, that string should be removed from the list.
+
+*****************************************************************
+DEV NOTES:
+
+Not sure if this was intended by the test crafter, but if an even item is clicked and removed, the item directly below becomes an even item, and all items below shift up one spot.  This script accounts for the shift and re-styles the list, including adding the removal feature to the newly shifted even items.
+
+Pun source: http://www.tearablepuns.org/posters/
+
+
+-->
+
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta charset="utf-8">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="-1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9">
+	<title>R. Sims Example 2</title>
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="rsims_example_2.css" />
+	
+
+</head>
+<body>
+<div class="content">
+<h3>Robert Sims - Web Dev Candidate - Example 2</h3>
+<p><span>JS and Jquery</span> (Loops, Dom manipulation, User based actions)</p>
+<p>Create an array of 20 strings (names, songs, birds, phrases...anything). Using jquery, display each string as a numbered list on the page. Every third string should be bolded, every 5th string should be italicized, and every even numbered string should have a black border around it. If a user clicks on an even numbered string, that string should be removed from the list.</p>
+
+<h3>These puns are tearable:</h3>
+<ol class="list"></ol>
+
+<div class="devnotes">
+	<p><span>DEV NOTES:</span></p>
+
+	<p>Not sure if this was intended by the test crafter, but if an even item is clicked and removed, the item directly below becomes an even item, and all items below shift up one spot.  This script accounts for the shift and re-styles the list, including adding the removal feature to the newly shifted even items.</p>
+
+	</p>Pun source: http://www.tearablepuns.org/posters/</p>
+</div>
+
+<script>
+
+var puns = [
+	"Once you've seen one shopping center, you've seen a mall.",
+	"A backward poet writes inverse.",
+	"Shotgun wedding: A case of wife or death.",
+	"When two egotists meet, it's an I for an I.",
+	"A gossip is someone with a great sense of rumor.",
+	"Santa's helpers are subordinate Clauses.",
+	"A skunk fell in the river and stank to the bottom.",
+	"Acupuncture is a job well done.",
+	"I wondered why the baseball kept getting bigger. Then it hit me.",
+	"Corduroy pillows are making headlines.",
+	"A good pun is its own reword.",
+	"For breakfast, a boiled egg is hard to beat.",
+	"A chicken crossing the road is poultry in motion.",
+	"Time flies like an arrow. Fruit flies like a banana.",
+	"If you dream in color, it's a pigment of your imagination.",
+	"A Freudian slip is when you say one thing but mean your mother.",
+	"Does the name Pavlov ring a bell?",
+	"Energizer Bunny arrested: charged with battery.",
+	"A pessimist's blood type is always b-negative.",
+	"Dijon vu: I've had this mustard before."
+];
+
+writeList(puns);
+
+$( document ).on("click", "li:nth-child(2n)", function() {
+	targetStr = $(this).text();
+	targetPos = $.inArray(targetStr, puns);
+
+	puns.splice(targetPos, 1);
+
+	writeList(puns);
+});
+
+
+function writeList(_ary) {
+	list = $(".list");
+	list.empty();
+
+	$.each(_ary, function(i, obj) {
+		list.append("<li>" + obj + "</li>")
+	});
+	
+	styleList();
+}
+
+
+function styleList() {
+	$("li").removeAttr("style");
+
+	$("li:nth-child(2n)").css("border","1px solid #000000");
+	$("li:nth-child(3n)").css("font-weight","bold");
+	$("li:nth-child(5n)").css("font-style","italic");
+}
+
+</script>
+
+</content>
+</body>
+</html>

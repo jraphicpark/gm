@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<!-- 
+Robert Sims - Web Dev Candidate - Example 1a
+
+- Build a standard html page that consists of 6 boxes. 
+
+- There should be 3 boxes per row, 2 per column. 
+
+- There should be 100px of space between each box (horizontally and vertically). 
+
+- Each box should have a solid 2px border. 
+
+- Between rows 1 and 2, there should be a banner that stretches the width of all boxes and reads HELLO WORLD in centered, bold, 25px font.
+
+- Extra credit: make this responsive
+
+*****************************************************************
+DEV NOTES:
+
+This approach uses the pseudo element ::after to place the "hello world" banner after the first row.  The banner matches width by default because the ::after pseudo will match the width of the element it follows.  
+
+Responsive version takes a few liberties outside of the instructions.  It assumes a small screen, like a mobile phone, and changes squares to 16x9 rectangles with 100% width while maintaining 100px vertical padding.  While the "hello" banner doesn't make since in this responsive layout, it is maintained after the thrid box (technically, still after the first row)
+
+-->
+
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta charset="utf-8">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="-1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9">
+	<title>R. Sims Example 1a</title>
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<link rel="stylesheet" type="text/css" href="rsims_example_1a.css" />
+	
+</head>
+<body>
+
+<div class="content">
+	<div class="row">
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+	</div>
+	<div class="row">
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+	</div>
+</div>
+
+</body>
+</html>

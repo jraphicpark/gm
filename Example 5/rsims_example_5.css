@@ -1,0 +1,24 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+	font-family: sans-serif;
+}
+
+span {
+	border: 1px solid #660000;
+	background-color: #ffcccc;
+	padding: 5px 10px;
+	font-family: Courier;
+}
+
+.content {
+	display: inline-block;
+	width: 50%;
+	min-width: 600px;
+}

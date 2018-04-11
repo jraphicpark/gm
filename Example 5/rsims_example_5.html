@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<!-- 
+Robert Sims - Web Dev Candidate - Example 5
+
+Regular Expression
+
+From the given list, write a regular expression that would return names 
+in the format of 'last name, first name', but omit names that begin with 
+the letter C. Provide the search expression as well as the replace expression 
+(i.e. /^(.*)$/i => $1)
+
+Jonathan Frankston
+Ashley Paxton
+Carrot Top
+Matthew Holmes
+Chris Cringle
+Matt Forte
+Easter Bunny
+Frosty Snowman
+Bart Simpson 
+-->
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta charset="utf-8">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="-1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9">
+	<title>R. Sims Example 5</title>
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<link rel="stylesheet" type="text/css" href="rsims_example_5.css" />
+	
+</head>
+<body>
+<div class="content">
+<h3>Robert Sims - Web Dev Candidate - Example 5</h3>
+<p><strong>Regular Expression</strong><br>
+
+From the given list, write a regular expression that would return names 
+in the format of 'last name, first name', but omit names that begin with 
+the letter C. Provide the search expression as well as the replace expression 
+(i.e. /^(.*)$/i => $1)</p>
+<hr>
+<p>RegEx for alternating names: <span>/(\w+)\s(\w+)/</span></p>
+<p>RegEx for finding names starting with 'C': <span>/\bC/</span></p>
+<hr>
+<script>
+
+var rxSwap = /(\w+)\s(\w+)/ ;
+var rxOmit = /\bC/ ;
+
+var names = [
+	'Jonathan Frankston',
+	'Ashley Paxton',
+	'Carrot Top',
+	'Matthew Holmes',
+	'Chris Cringle',
+	'Matt Forte',
+	'Easter Bunny',
+	'Frosty Snowman',
+	'Bart Simpson'
+];
+
+document.write( '<b>Original list</b><br>');
+names.forEach( function(item, index, array) {
+	document.write( item + '<br>');
+}) 
+
+
+document.write( "<hr><b>Reorg'd list</b><br>");
+names.forEach( function(item, index, array) {
+	if (rxOmit.exec(item) == null) {
+		document.write( item.replace(rxSwap, '$2, $1') + '<br>');
+	}
+}) 
+
+</script>
+</div>
+</body>
+</html>
